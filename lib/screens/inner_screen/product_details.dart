@@ -3,7 +3,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/providers/providers_shelf.dart';
+import 'package:tuncecom/providers/providers.dart';
 import 'package:tuncecom/services/services_shelf.dart';
 import 'package:tuncecom/widgets/widgets_shelf.dart';
 

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/providers/providers_shelf.dart';
+import 'package:tuncecom/providers/providers.dart';
 import 'package:tuncecom/screens/cart/cart_widget.dart';
 import 'package:tuncecom/screens/screens.dart';
 import 'package:tuncecom/services/services_shelf.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuncecom/consts/consts_shelf.dart';
-import 'package:tuncecom/providers/providers_shelf.dart';
+import 'package:tuncecom/providers/providers.dart';
 import 'package:tuncecom/screens/screens.dart';
 import 'firebase_options.dart';
 import "package:firebase_core/firebase_core.dart";

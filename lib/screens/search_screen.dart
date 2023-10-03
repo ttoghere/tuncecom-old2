@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/providers/providers_shelf.dart';
+import 'package:tuncecom/providers/providers.dart';
 import 'package:tuncecom/services/services_shelf.dart';
 import 'package:tuncecom/widgets/widgets_shelf.dart';
 

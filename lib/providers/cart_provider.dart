@@ -3,10 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/providers/providers_shelf.dart';
 import 'package:tuncecom/services/services_shelf.dart';
 
 import 'package:uuid/uuid.dart';
+
+import 'products_provider.dart';
 
 class CartProvider with ChangeNotifier {
   final Map<String, CartModel> _cartItems = {};

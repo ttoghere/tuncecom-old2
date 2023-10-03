@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/providers/providers_shelf.dart';
+import 'package:tuncecom/providers/providers.dart';
 import 'package:tuncecom/screens/cart/cart_screen.dart';
 import 'package:tuncecom/screens/screens.dart';
 
