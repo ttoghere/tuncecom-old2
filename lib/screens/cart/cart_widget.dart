@@ -2,10 +2,14 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/providers/providers.dart';
+import 'package:tuncecom/models/cart_model.dart';
 import 'package:tuncecom/screens/cart/quantity_btm_sheet.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
+import 'package:tuncecom/widgets/title_text.dart';
+
+import '../../providers/cart_provider.dart';
+import '../../providers/products_provider.dart';
+import '../../widgets/products/heart_btn.dart';
 
 class CartWidget extends StatelessWidget {
   const CartWidget({super.key});

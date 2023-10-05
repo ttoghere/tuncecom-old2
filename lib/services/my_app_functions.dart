@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
-
+import 'package:tuncecom/widgets/title_text.dart';
 import '../widgets/subtitle_text.dart';
 import 'assets_manager.dart';
 
 class MyAppFunctions {
-  //It's an error or warning popup
   static Future<void> showErrorOrWarningDialog({
     required BuildContext context,
     required String subtitle,
@@ -70,7 +68,6 @@ class MyAppFunctions {
         });
   }
 
-  //Retuns the Image Picker Column
   static Future<void> imagePickerDialog({
     required BuildContext context,
     required Function cameraFCT,

@@ -1,9 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/providers/providers.dart';
-import 'package:tuncecom/screens/screens.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/screens/inner_screen/product_details.dart';
+import 'package:tuncecom/services/my_app_functions.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
+import 'package:tuncecom/widgets/title_text.dart';
+import '../../providers/cart_provider.dart';
+import '../../providers/products_provider.dart';
+import '../../providers/viewed_recently_provider.dart';
+import 'heart_btn.dart';
 
 class ProductWidget extends StatefulWidget {
   const ProductWidget({
@@ -18,6 +25,7 @@ class ProductWidget extends StatefulWidget {
 class _ProductWidgetState extends State<ProductWidget> {
   @override
   Widget build(BuildContext context) {
+    // final productModelProvider = Provider.of<ProductModel>(context);
     final productsProvider = Provider.of<ProductsProvider>(context);
     final getCurrProduct = productsProvider.findByProdId(widget.productId);
     final cartProvider = Provider.of<CartProvider>(context);
@@ -94,21 +102,34 @@ class _ProductWidgetState extends State<ProductWidget> {
                             color: Colors.lightBlue,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(12.0),
-                              onTap: () {
-                                //Is it in cart ?
+                              onTap: () async {
                                 if (cartProvider.isProdinCart(
                                     productId: getCurrProduct.productId)) {
                                   return;
                                 }
-                                //It adds products to cart
-                                cartProvider.addProductToCart(
-                                    productId: getCurrProduct.productId);
+                                try {
+                                  await cartProvider.addToCartFirebase(
+                                      productId: getCurrProduct.productId,
+                                      qty: 1,
+                                      context: context);
+                                } catch (e) {
+                                  await MyAppFunctions.showErrorOrWarningDialog(
+                                    context: context,
+                                    subtitle: e.toString(),
+                                    fct: () {},
+                                  );
+                                }
+                                // if (cartProvider.isProdinCart(
+                                //     productId: getCurrProduct.productId)) {
+                                //   return;
+                                // }
+                                // cartProvider.addProductToCart(
+                                //     productId: getCurrProduct.productId);
                               },
                               splashColor: Colors.red,
                               child: Padding(
                                 padding: const EdgeInsets.all(6.0),
                                 child: Icon(
-                                  //Is it in cart ?
                                   cartProvider.isProdinCart(
                                           productId: getCurrProduct.productId)
                                       ? Icons.check

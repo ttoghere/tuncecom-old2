@@ -2,12 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/providers/providers.dart';
+import 'package:tuncecom/providers/cart_provider.dart';
 import 'package:tuncecom/screens/cart/cart_widget.dart';
-import 'package:tuncecom/screens/screens.dart';
-import 'package:tuncecom/services/services_shelf.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/screens/loading_manager.dart';
+import 'package:tuncecom/services/assets_manager.dart';
+import 'package:tuncecom/services/my_app_functions.dart';
+import 'package:tuncecom/widgets/empty_bag.dart';
+import 'package:tuncecom/widgets/title_text.dart';
+
 import 'package:uuid/uuid.dart';
+
+import '../../providers/products_provider.dart';
+import '../../providers/user_provider.dart';
 import 'bottom_checkout.dart';
 
 class CartScreen extends StatefulWidget {

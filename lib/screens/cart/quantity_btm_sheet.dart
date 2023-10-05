@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/models/cart_model.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
 
 import '../../providers/cart_provider.dart';
 

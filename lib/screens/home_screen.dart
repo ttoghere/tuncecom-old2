@@ -1,10 +1,14 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/consts/consts_shelf.dart';
-import 'package:tuncecom/providers/providers.dart';
-import 'package:tuncecom/services/services_shelf.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/consts/app_constants.dart';
+import 'package:tuncecom/widgets/products/ctg_rounded_widget.dart';
+import 'package:tuncecom/widgets/products/latest_arrival.dart';
+
+import '../providers/products_provider.dart';
+import '../services/assets_manager.dart';
+import '../widgets/app_name_text.dart';
+import '../widgets/title_text.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

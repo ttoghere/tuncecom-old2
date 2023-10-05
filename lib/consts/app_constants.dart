@@ -1,5 +1,6 @@
-import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/services/services_shelf.dart';
+import 'package:tuncecom/models/categories_model.dart';
+
+import '../services/assets_manager.dart';
 
 class AppConstants {
   static const String imageUrl =

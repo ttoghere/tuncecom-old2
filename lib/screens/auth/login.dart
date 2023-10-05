@@ -2,9 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:tuncecom/consts/consts_shelf.dart';
-import 'package:tuncecom/screens/screens.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/consts/validator.dart';
+import 'package:tuncecom/root_screen.dart';
+import 'package:tuncecom/screens/auth/forgot_password.dart';
+import 'package:tuncecom/screens/auth/register.dart';
+import 'package:tuncecom/screens/loading_manager.dart';
+import 'package:tuncecom/widgets/app_name_text.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
+import 'package:tuncecom/widgets/title_text.dart';
 
 import '../../services/my_app_functions.dart';
 import '../../widgets/auth/google_btn.dart';
@@ -230,15 +235,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: kBottomNavigationBarHeight + 10,
                           child: Row(
                             children: [
-                              const Expanded(
-                                flex: 2,
-                                child: SizedBox(
-                                  height: kBottomNavigationBarHeight,
-                                  child: FittedBox(
-                                    child: GoogleButton(),
-                                  ),
-                                ),
-                              ),
+                              // const Expanded(
+                              //   flex: 2,
+                              //   child: SizedBox(
+                              //     height: kBottomNavigationBarHeight,
+                              //     child: FittedBox(
+                              //       child: GoogleButton(),
+                              //     ),
+                              //   ),
+                              // ),
                               const SizedBox(
                                 width: 8,
                               ),

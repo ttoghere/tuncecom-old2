@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tuncecom/consts/consts_shelf.dart';
+import 'package:tuncecom/consts/app_colors.dart';
 
 class Styles {
   static ThemeData themeData(

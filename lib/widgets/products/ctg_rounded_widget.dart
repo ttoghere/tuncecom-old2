@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tuncecom/screens/screens.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/screens/search_screen.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
 
 class CategoryRoundedWidget extends StatelessWidget {
   const CategoryRoundedWidget({

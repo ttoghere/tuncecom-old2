@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/providers/providers.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
+import 'package:tuncecom/widgets/title_text.dart';
+
+import '../../providers/cart_provider.dart';
+import '../../providers/products_provider.dart';
 
 class CartBottomSheetWidget extends StatelessWidget {
   const CartBottomSheetWidget({super.key, required this.function});

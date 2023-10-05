@@ -7,10 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tuncecom/consts/consts_shelf.dart';
-import 'package:tuncecom/screens/screens.dart';
-import 'package:tuncecom/services/services_shelf.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/consts/validator.dart';
+import 'package:tuncecom/screens/loading_manager.dart';
+import 'package:tuncecom/services/my_app_functions.dart';
+import 'package:tuncecom/widgets/app_name_text.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
+import 'package:tuncecom/widgets/title_text.dart';
+
+import '../../root_screen.dart';
+import '../../widgets/auth/image_picker_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routName = "/RegisterScreen";

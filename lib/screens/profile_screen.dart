@@ -1,14 +1,21 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/providers/providers.dart';
-import 'package:tuncecom/screens/screens.dart';
-import 'package:tuncecom/services/services_shelf.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/screens/auth/login.dart';
+import 'package:tuncecom/screens/inner_screen/viewed_recently.dart';
+import 'package:tuncecom/screens/inner_screen/wishlist.dart';
+import 'package:tuncecom/screens/loading_manager.dart';
+import 'package:tuncecom/services/assets_manager.dart';
+import 'package:tuncecom/widgets/subtitle_text.dart';
+
+import '../models/user_model.dart';
+import '../providers/theme_provider.dart';
+import '../providers/user_provider.dart';
+import '../services/my_app_functions.dart';
+import '../widgets/app_name_text.dart';
+import '../widgets/title_text.dart';
+import 'inner_screen/orders/orders_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -35,9 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen>
       await MyAppFunctions.showErrorOrWarningDialog(
         context: context,
         subtitle: error.toString(),
-        fct: () {
-          Navigator.of(context).pop();
-        },
+        fct: () {},
       );
     } finally {
       setState(() {

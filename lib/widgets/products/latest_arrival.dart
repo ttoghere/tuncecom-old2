@@ -1,10 +1,14 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/providers/providers.dart';
-import 'package:tuncecom/screens/screens.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/models/product_model.dart';
+import 'package:tuncecom/providers/viewed_recently_provider.dart';
+
+import '../../providers/cart_provider.dart';
+import '../../screens/inner_screen/product_details.dart';
+import '../../services/my_app_functions.dart';
+import '../subtitle_text.dart';
+import 'heart_btn.dart';
 
 class LatestArrivalProductsWidget extends StatelessWidget {
   const LatestArrivalProductsWidget({super.key});
@@ -20,7 +24,6 @@ class LatestArrivalProductsWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () async {
-          //Add the product data to Viewed list
           viewedProdProvider.addViewedProd(productId: productsModel.productId);
           await Navigator.pushNamed(context, ProductDetailsScreen.routName,
               arguments: productsModel.productId);
@@ -64,15 +67,23 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                             productId: productsModel.productId,
                           ),
                           IconButton(
-                            onPressed: () {
-                              //Is the product in cart ?
+                            onPressed: () async {
                               if (cartProvider.isProdinCart(
                                   productId: productsModel.productId)) {
                                 return;
                               }
-                              //Adding product to cart
-                              cartProvider.addProductToCart(
-                                  productId: productsModel.productId);
+                              try {
+                                await cartProvider.addToCartFirebase(
+                                    productId: productsModel.productId,
+                                    qty: 1,
+                                    context: context);
+                              } catch (e) {
+                                await MyAppFunctions.showErrorOrWarningDialog(
+                                  context: context,
+                                  subtitle: e.toString(),
+                                  fct: () {},
+                                );
+                              }
                             },
                             icon: Icon(
                               cartProvider.isProdinCart(

@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:tuncecom/models/models_shelf.dart';
-import 'package:tuncecom/services/services_shelf.dart';
+import 'package:tuncecom/models/wishlist_model.dart';
 import 'package:uuid/uuid.dart';
+
+import '../services/my_app_functions.dart';
 
 class WishlistProvider with ChangeNotifier {
   final Map<String, WishlistModel> _wishlistItems = {};

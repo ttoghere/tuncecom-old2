@@ -1,11 +1,14 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/providers/providers.dart';
-import 'package:tuncecom/services/services_shelf.dart';
-import 'package:tuncecom/widgets/widgets_shelf.dart';
+import 'package:tuncecom/widgets/title_text.dart';
+
+import '../../providers/cart_provider.dart';
+import '../../providers/products_provider.dart';
+import '../../services/my_app_functions.dart';
+import '../../widgets/app_name_text.dart';
+import '../../widgets/products/heart_btn.dart';
+import '../../widgets/subtitle_text.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   static const routName = "/ProductDetailsScreen";
@@ -123,9 +126,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                             .showErrorOrWarningDialog(
                                           context: context,
                                           subtitle: e.toString(),
-                                          fct: () {
-                                            Navigator.of(context).pop();
-                                          },
+                                          fct: () {},
                                         );
                                       }
                                     },

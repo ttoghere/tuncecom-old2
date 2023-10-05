@@ -1,8 +1,7 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tuncecom/models/models_shelf.dart';
+import 'package:tuncecom/models/user_model.dart';
 
 class UserProvider with ChangeNotifier {
   UserModel? userModel;
@@ -35,10 +34,8 @@ class UserProvider with ChangeNotifier {
       );
       return userModel;
     } on FirebaseException catch (error) {
-      log("Firebase Error: $error");
       rethrow;
     } catch (error) {
-      log("App Error: $error");
       rethrow;
     }
   }
