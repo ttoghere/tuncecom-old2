@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tuncecom/models/order_model.dart';
+import 'package:tuncecom/providers/order_provider.dart';
 import '../../../../widgets/empty_bag.dart';
 import '../../../services/assets_manager.dart';
 import '../../../widgets/title_text.dart';
@@ -14,35 +17,51 @@ class OrdersScreenFree extends StatefulWidget {
 }
 
 class _OrdersScreenFreeState extends State<OrdersScreenFree> {
-  bool isEmptyOrders = false;
   @override
   Widget build(BuildContext context) {
+    final orderProvider = Provider.of<OrderProvider>(context);
     return Scaffold(
-        appBar: AppBar(
-          title: const TitlesTextWidget(
-            label: 'Placed orders',
-          ),
+      appBar: AppBar(
+        title: const Text(
+          'Placed orders',
         ),
-        body: isEmptyOrders
-            ? EmptyBagWidget(
+      ),
+      body: FutureBuilder<List<OrdersModelAdvanced>>(
+        future: orderProvider.fetchOrders(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: SelectableText(snapshot.error.toString()),
+            );
+          } else if (orderProvider.getOrders.isEmpty) {
+            return EmptyBagWidget(
                 imagePath: AssetsManager.orderBag,
-                title: "No orders has been placed yet",
+                title: "No Orders Have Been Placed",
                 subtitle: "",
-                buttonText: "Shop now")
-            : ListView.separated(
-                itemCount: 15,
-                itemBuilder: (ctx, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2, vertical: 6),
-                    child: OrdersWidgetFree(),
+                buttonText: "Shop Now");
+          } else if (snapshot.hasData) {
+            return ListView.separated(
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 2, vertical: 6),
+                    child: OrdersWidgetFree(
+                      ordersModelAdvanced: orderProvider.getOrders[index],
+                    ),
                   );
                 },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const Divider(
-                      // thickness: 8,
-                      // color: Colors.red,
-                      );
+                separatorBuilder: (context, index) {
+                  return const Divider();
                 },
-              ));
+                itemCount: snapshot.data!.length);
+          }
+          return Text("There is an error");
+        },
+      ),
+    );
   }
 }

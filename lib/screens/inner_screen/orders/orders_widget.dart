@@ -1,11 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+
+import 'package:tuncecom/models/order_model.dart';
+
 import '../../../consts/app_constants.dart';
 import '../../../widgets/subtitle_text.dart';
 import '../../../widgets/title_text.dart';
 
 class OrdersWidgetFree extends StatefulWidget {
-  const OrdersWidgetFree({super.key});
+  final OrdersModelAdvanced ordersModelAdvanced;
+  const OrdersWidgetFree({
+    Key? key,
+    required this.ordersModelAdvanced,
+  }) : super(key: key);
 
   @override
   State<OrdersWidgetFree> createState() => _OrdersWidgetFreeState();
@@ -25,7 +33,7 @@ class _OrdersWidgetFreeState extends State<OrdersWidgetFree> {
             child: FancyShimmerImage(
               height: size.width * 0.25,
               width: size.width * 0.25,
-              imageUrl: AppConstants.imageUrl,
+              imageUrl: widget.ordersModelAdvanced.imageUrl,
             ),
           ),
           Flexible(
@@ -37,45 +45,45 @@ class _OrdersWidgetFreeState extends State<OrdersWidgetFree> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Flexible(
-                        child: TitlesTextWidget(
-                          label: 'productTitle',
+                      Flexible(
+                        child: Text(
+                          widget.ordersModelAdvanced.productTitle,
                           maxLines: 2,
-                          fontSize: 15,
+                          style: TextStyle(fontSize: 15),
                         ),
                       ),
                       IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.clear,
-                            color: Colors.red,
-                            size: 22,
-                          )),
-                    ],
-                  ),
-                  const Row(
-                    children: [
-                      TitlesTextWidget(
-                        label: 'Price:  ',
-                        fontSize: 15,
-                      ),
-                      Flexible(
-                        child: SubtitleTextWidget(
-                          label: "11.99 \$",
-                          fontSize: 15,
-                          color: Colors.blue,
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.clear,
+                          color: Colors.red,
+                          size: 22,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(
+                  Row(
+                    children: [
+                      Text(
+                        'Price:  ',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      Flexible(
+                        child: Text(
+                          widget.ordersModelAdvanced.price.toString(),
+                          style: TextStyle(fontSize: 15, color: Colors.blue),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
                     height: 5,
                   ),
-                  const SubtitleTextWidget(
-                    label: "Qty: 10",
-                    fontSize: 15,
+                  Text(
+                    "QTY: ${widget.ordersModelAdvanced.quantity}",
+                    style: TextStyle(fontSize: 15),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 5,
                   ),
                 ],

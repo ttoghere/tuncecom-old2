@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tuncecom/providers/order_provider.dart';
 import 'package:tuncecom/providers/products_provider.dart';
 import 'package:tuncecom/providers/theme_provider.dart';
 import 'package:tuncecom/root_screen.dart';
@@ -70,6 +71,9 @@ class MyApp extends StatelessWidget {
               ChangeNotifierProvider(create: (_) {
                 return UserProvider();
               }),
+              ChangeNotifierProvider(create: (_) {
+                return OrderProvider();
+              })
             ],
             child: Consumer<ThemeProvider>(
                 builder: (context, themeProvider, child) {
