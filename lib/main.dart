@@ -5,6 +5,7 @@ import 'package:tuncecom/providers/order_provider.dart';
 import 'package:tuncecom/providers/products_provider.dart';
 import 'package:tuncecom/providers/theme_provider.dart';
 import 'package:tuncecom/root_screen.dart';
+import 'package:tuncecom/screens/diy/diy_screen.dart';
 import 'package:tuncecom/screens/inner_screen/product_details.dart';
 import 'package:tuncecom/screens/inner_screen/viewed_recently.dart';
 import 'consts/theme_data.dart';
@@ -99,6 +100,7 @@ class MyApp extends StatelessWidget {
                   ForgotPasswordScreen.routeName: (context) =>
                       const ForgotPasswordScreen(),
                   SearchScreen.routeName: (context) => const SearchScreen(),
+                  DIYScreen.routeName: (context) => const DIYScreen(),
                 },
               );
             }),
