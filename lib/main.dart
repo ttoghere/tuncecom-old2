@@ -1,24 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tuncecom/consts/routes_management.dart';
 import 'package:tuncecom/providers/order_provider.dart';
 import 'package:tuncecom/providers/products_provider.dart';
 import 'package:tuncecom/providers/theme_provider.dart';
 import 'package:tuncecom/root_screen.dart';
-import 'package:tuncecom/screens/diy/diy_screen.dart';
-import 'package:tuncecom/screens/inner_screen/product_details.dart';
-import 'package:tuncecom/screens/inner_screen/viewed_recently.dart';
 import 'consts/theme_data.dart';
 import 'providers/cart_provider.dart';
 import 'providers/user_provider.dart';
 import 'providers/viewed_recently_provider.dart';
 import 'providers/wishlist_provider.dart';
-import 'screens/auth/forgot_password.dart';
-import 'screens/auth/login.dart';
-import 'screens/auth/register.dart';
-import 'screens/inner_screen/orders/orders_screen.dart';
-import 'screens/inner_screen/wishlist.dart';
-import 'screens/search_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,28 +72,13 @@ class MyApp extends StatelessWidget {
                 builder: (context, themeProvider, child) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                title: 'ShopSmart EN',
+                title: 'TuncEcom',
                 theme: Styles.themeData(
                     isDarkTheme: themeProvider.getIsDarkTheme,
                     context: context),
-                home: const RootScreen(),
+                initialRoute: RootScreen.routeName,
                 // home: const LoginScreen(),
-                routes: {
-                  RootScreen.routeName: (context) => const RootScreen(),
-                  ProductDetailsScreen.routName: (context) =>
-                      const ProductDetailsScreen(),
-                  WishlistScreen.routName: (context) => const WishlistScreen(),
-                  ViewedRecentlyScreen.routName: (context) =>
-                      const ViewedRecentlyScreen(),
-                  RegisterScreen.routName: (context) => const RegisterScreen(),
-                  LoginScreen.routeName: (context) => const LoginScreen(),
-                  OrdersScreenFree.routeName: (context) =>
-                      const OrdersScreenFree(),
-                  ForgotPasswordScreen.routeName: (context) =>
-                      const ForgotPasswordScreen(),
-                  SearchScreen.routeName: (context) => const SearchScreen(),
-                  DIYScreen.routeName: (context) => const DIYScreen(),
-                },
+                onGenerateRoute: RouteGenerator.getRoute,
               );
             }),
           );

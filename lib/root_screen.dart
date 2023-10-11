@@ -1,16 +1,12 @@
 import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
-import 'package:tuncecom/models/diy_model.dart';
 import 'package:tuncecom/providers/cart_provider.dart';
 import 'package:tuncecom/providers/products_provider.dart';
 import 'package:tuncecom/providers/user_provider.dart';
 import 'package:tuncecom/screens/cart/cart_screen.dart';
-import 'package:tuncecom/screens/diy/diy_details.dart';
-import 'package:tuncecom/screens/diy/diy_screen.dart';
 import 'package:tuncecom/screens/home_screen.dart';
 import 'package:tuncecom/screens/profile_screen.dart';
 import 'package:tuncecom/screens/search_screen.dart';
@@ -33,11 +29,11 @@ class _RootScreenState extends State<RootScreen> {
   @override
   void initState() {
     super.initState();
-    screens = const [
-      HomeScreen(),
-      SearchScreen(),
-      CartScreen(),
-      ProfileScreen(),
+    screens = [
+      const HomeScreen(),
+      const SearchScreen(),
+      const CartScreen(),
+      const ProfileScreen(),
     ];
     controller = PageController(initialPage: currentScreen);
   }
@@ -47,18 +43,18 @@ class _RootScreenState extends State<RootScreen> {
         Provider.of<ProductsProvider>(context, listen: false);
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
     final userProvider = Provider.of<UserProvider>(context, listen: false);
-
     final wishlistsProvider =
         Provider.of<WishlistProvider>(context, listen: false);
+
     try {
-      Future.wait({
+      await Future.wait([
         productsProvider.fetchProducts(),
         userProvider.fetchUserInfo(),
-      });
-      Future.wait({
+      ]);
+      await Future.wait([
         cartProvider.fetchCart(),
         wishlistsProvider.fetchWishlist(),
-      });
+      ]);
     } catch (error) {
       log(error.toString());
     }
@@ -76,16 +72,6 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(DIYScreen.routeName);
-            },
-            icon: Icon(Icons.ac_unit),
-          ),
-        ],
-      ),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: controller,

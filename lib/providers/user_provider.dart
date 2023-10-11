@@ -33,7 +33,7 @@ class UserProvider with ChangeNotifier {
         createdAt: userDoc.get('createdAt'),
       );
       return userModel;
-    } on FirebaseException catch (error) {
+    } on FirebaseException {
       rethrow;
     } catch (error) {
       rethrow;

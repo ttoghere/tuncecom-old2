@@ -42,7 +42,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     productId: getCurrProduct.productId);
                 await Navigator.pushNamed(
                   context,
-                  ProductDetailsScreen.routName,
+                  ProductDetailsScreen.routeName,
                   arguments: getCurrProduct.productId,
                 );
               },

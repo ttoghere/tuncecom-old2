@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tuncecom/models/product_model.dart';
 import 'package:tuncecom/providers/products_provider.dart';
-
-import '../services/assets_manager.dart';
 import '../widgets/products/product_widget.dart';
 import '../widgets/title_text.dart';
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
@@ -47,12 +45,6 @@ class _SearchScreenState extends State<SearchScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              AssetsManager.shoppingCart,
-            ),
-          ),
           title: TitlesTextWidget(label: passedCategory ?? "Search products"),
         ),
         body: productList.isEmpty

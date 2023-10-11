@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +27,7 @@ class LatestArrivalProductsWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           viewedProdProvider.addViewedProd(productId: productsModel.productId);
-          await Navigator.pushNamed(context, ProductDetailsScreen.routName,
+          await Navigator.pushNamed(context, ProductDetailsScreen.routeName,
               arguments: productsModel.productId);
         },
         child: SizedBox(

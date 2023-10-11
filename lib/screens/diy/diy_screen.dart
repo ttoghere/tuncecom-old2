@@ -12,6 +12,9 @@ class DIYScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("DIY Screen"),
+      ),
       body: FutureBuilder<QuerySnapshot>(
         future: FirebaseFirestore.instance.collection('diyCollection').get(),
         builder: (context, snapshot) {
@@ -39,6 +42,13 @@ class DIYScreen extends StatelessWidget {
                 final productImagePath = productData['imagePath'];
                 productDetails.add(productName);
                 final productSteps = List<String>.from(productData['steps']);
+                final productItem = DIYModel(
+                  description: productDescription,
+                  id: productId,
+                  imageUrl: productImagePath,
+                  steps: productSteps,
+                  title: productName,
+                );
 
                 return ListTile(
                   title: Text(productName),
@@ -50,7 +60,7 @@ class DIYScreen extends StatelessWidget {
                   onTap: () async {
                     // Ürün detaylarına gitmek için tıklama işlemini burada yapabilirsiniz
                     log('navigateToProductDetails fonksiyonu çağrıldı.');
-                    await navigateToProductDetails(context, productSteps);
+                    await navigateToProductDetails(context, productItem);
                   },
                 );
               },
@@ -63,39 +73,14 @@ class DIYScreen extends StatelessWidget {
 
   Future<void> navigateToProductDetails(
     BuildContext context,
-    List<String> productSteps,
+    DIYModel productItem,
   ) async {
-    final List<DIYModel> productDetails = [];
-
-    for (String stepId in productSteps) {
-      await FirebaseFirestore.instance
-          .collection('diyCollection')
-          .doc(stepId)
-          .get()
-          .then((doc) {
-        if (doc.exists) {
-          final data = doc.data() as Map<String, dynamic>;
-          final model = DIYModel(
-            description: data['description'],
-            id: data['id'],
-            imageUrl: data['imagePath'],
-            steps: List<String>.from(data['steps']),
-            title: data['title'],
-          );
-          productDetails.add(model);
-        }
-      });
-    }
-
-    // Ürün detayları alındıysa, detay sayfasına geçiş yapabilirsiniz.
-    if (productDetails.isNotEmpty) {
-      print('Sayfa geçişi yapılıyor.');
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => DIYDetails(productDetails: productDetails),
-        ),
-      );
-    }
+    log('Sayfa geçişi yapılıyor.');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DIYDetails(productDetails: productItem),
+      ),
+    );
   }
 }

@@ -18,7 +18,7 @@ import '../../root_screen.dart';
 import '../../widgets/auth/image_picker_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
-  static const routName = "/RegisterScreen";
+  static const routeName = "/RegisterScreen";
   const RegisterScreen({super.key});
 
   @override

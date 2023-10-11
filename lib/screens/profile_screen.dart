@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -167,7 +169,8 @@ class _ProfileScreenState extends State<ProfileScreen>
                         text: "Wishlist",
                         imagePath: AssetsManager.wishlistSvg,
                         function: () {
-                          Navigator.pushNamed(context, WishlistScreen.routName);
+                          Navigator.pushNamed(
+                              context, WishlistScreen.routeName);
                         },
                       ),
                     ),
@@ -176,7 +179,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                       imagePath: AssetsManager.recent,
                       function: () {
                         Navigator.pushNamed(
-                            context, ViewedRecentlyScreen.routName);
+                            context, ViewedRecentlyScreen.routeName);
                       },
                     ),
                     CustomListTile(

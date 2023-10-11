@@ -4,7 +4,6 @@ import 'package:tuncecom/models/order_model.dart';
 import 'package:tuncecom/providers/order_provider.dart';
 import '../../../../widgets/empty_bag.dart';
 import '../../../services/assets_manager.dart';
-import '../../../widgets/title_text.dart';
 import 'orders_widget.dart';
 
 class OrdersScreenFree extends StatefulWidget {
@@ -30,7 +29,7 @@ class _OrdersScreenFreeState extends State<OrdersScreenFree> {
         future: orderProvider.fetchOrders(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -59,7 +58,7 @@ class _OrdersScreenFreeState extends State<OrdersScreenFree> {
                 },
                 itemCount: snapshot.data!.length);
           }
-          return Text("There is an error");
+          return const Text("There is an error");
         },
       ),
     );

@@ -1,12 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-
 import 'package:tuncecom/models/order_model.dart';
-
-import '../../../consts/app_constants.dart';
-import '../../../widgets/subtitle_text.dart';
-import '../../../widgets/title_text.dart';
 
 class OrdersWidgetFree extends StatefulWidget {
   final OrdersModelAdvanced ordersModelAdvanced;
@@ -49,12 +44,12 @@ class _OrdersWidgetFreeState extends State<OrdersWidgetFree> {
                         child: Text(
                           widget.ordersModelAdvanced.productTitle,
                           maxLines: 2,
-                          style: TextStyle(fontSize: 15),
+                          style: const TextStyle(fontSize: 15),
                         ),
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.clear,
                           color: Colors.red,
                           size: 22,
@@ -64,26 +59,27 @@ class _OrdersWidgetFreeState extends State<OrdersWidgetFree> {
                   ),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Price:  ',
                         style: TextStyle(fontSize: 15),
                       ),
                       Flexible(
                         child: Text(
                           widget.ordersModelAdvanced.price.toString(),
-                          style: TextStyle(fontSize: 15, color: Colors.blue),
+                          style:
+                              const TextStyle(fontSize: 15, color: Colors.blue),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Text(
                     "QTY: ${widget.ordersModelAdvanced.quantity}",
-                    style: TextStyle(fontSize: 15),
+                    style: const TextStyle(fontSize: 15),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                 ],

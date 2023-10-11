@@ -10,7 +10,7 @@ import '../../services/my_app_functions.dart';
 import '../../widgets/products/product_widget.dart';
 
 class WishlistScreen extends StatelessWidget {
-  static const routName = "/WishlistScreen";
+  static const routeName = "/WishlistScreen";
   const WishlistScreen({super.key});
   final bool isEmpty = true;
   @override

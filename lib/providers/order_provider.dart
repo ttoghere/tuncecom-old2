@@ -46,7 +46,7 @@ class OrderProvider with ChangeNotifier {
 
       return orders;
     } catch (e) {
-      print("Hata: $e");
+      log("Hata: $e");
       // Hata durumunda boş bir liste döndürün veya hata işleme stratejisi uygulayın.
       return [];
     }

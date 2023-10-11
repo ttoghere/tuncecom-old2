@@ -10,9 +10,7 @@ import 'package:tuncecom/screens/loading_manager.dart';
 import 'package:tuncecom/widgets/app_name_text.dart';
 import 'package:tuncecom/widgets/subtitle_text.dart';
 import 'package:tuncecom/widgets/title_text.dart';
-
 import '../../services/my_app_functions.dart';
-import '../../widgets/auth/google_btn.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/LoginScreen';
@@ -286,7 +284,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onPressed: () {
                                 Navigator.of(context)
-                                    .pushNamed(RegisterScreen.routName);
+                                    .pushNamed(RegisterScreen.routeName);
                               },
                             ),
                           ],
