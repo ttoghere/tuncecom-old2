@@ -14,6 +14,7 @@ import 'package:tuncecom/widgets/title_text.dart';
 
 import 'package:uuid/uuid.dart';
 
+import '../../consts/app_colors.dart';
 import '../../providers/products_provider.dart';
 import '../../providers/user_provider.dart';
 import 'bottom_checkout.dart';
@@ -46,61 +47,75 @@ class _CartScreenState extends State<CartScreen> {
               buttonText: "Shop now",
             ),
           )
-        : Scaffold(
-            bottomSheet: CartBottomSheetWidget(function: () async {
-              await placeOrderAdvanced(
-                cartProvider: cartProvider,
-                productProvider: productsProvider,
-                userProvider: userProvider,
-              );
-            }),
-            appBar: AppBar(
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  AssetsManager.shoppingCart,
-                ),
-              ),
-              title: TitlesTextWidget(
-                  label: "Cart (${cartProvider.getCartitems.length})"),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    MyAppFunctions.showErrorOrWarningDialog(
-                      isError: false,
-                      context: context,
-                      subtitle: "Clear cart?",
-                      fct: () async {
-                        cartProvider.clearCartFromFirebase();
-                        // cartProvider.clearLocalCart();
-                      },
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.delete_forever_rounded,
-                    color: Colors.red,
+        : WillPopScope(
+            onWillPop: () async {
+              return false;
+            },
+            child: Scaffold(
+              bottomSheet: CartBottomSheetWidget(function: () async {
+                await placeOrderAdvanced(
+                  cartProvider: cartProvider,
+                  productProvider: productsProvider,
+                  userProvider: userProvider,
+                );
+              }),
+              appBar: AppBar(
+                flexibleSpace: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.lightScaffoldColor,
+                        Colors.white38,
+                        AppColors.lightScaffoldColor,
+                      ],
+                    ),
                   ),
                 ),
-              ],
-            ),
-            body: LoadingManager(
-              isLoading: _isLoading,
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                        itemCount: cartProvider.getCartitems.length,
-                        itemBuilder: (context, index) {
-                          return ChangeNotifierProvider.value(
-                              value: cartProvider.getCartitems.values
-                                  .toList()[index],
-                              child: const CartWidget());
-                        }),
+                leading: Icon(
+                  Icons.ac_unit,
+                  color: Colors.white,
+                ),
+                title: TitlesTextWidget(
+                    label: "Cart (${cartProvider.getCartitems.length})"),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      MyAppFunctions.showErrorOrWarningDialog(
+                        isError: false,
+                        context: context,
+                        subtitle: "Clear cart?",
+                        fct: () async {
+                          cartProvider.clearCartFromFirebase();
+                          // cartProvider.clearLocalCart();
+                        },
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.delete_forever_rounded,
+                      color: Colors.red,
+                    ),
                   ),
-                  const SizedBox(
-                    height: kBottomNavigationBarHeight + 10,
-                  )
                 ],
+              ),
+              body: LoadingManager(
+                isLoading: _isLoading,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                          itemCount: cartProvider.getCartitems.length,
+                          itemBuilder: (context, index) {
+                            return ChangeNotifierProvider.value(
+                                value: cartProvider.getCartitems.values
+                                    .toList()[index],
+                                child: const CartWidget());
+                          }),
+                    ),
+                    const SizedBox(
+                      height: kBottomNavigationBarHeight + 10,
+                    )
+                  ],
+                ),
               ),
             ),
           );

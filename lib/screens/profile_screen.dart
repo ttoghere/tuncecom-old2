@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
+import 'package:tuncecom/consts/app_colors.dart';
 import 'package:tuncecom/screens/auth/login.dart';
 import 'package:tuncecom/screens/inner_screen/viewed_recently.dart';
 import 'package:tuncecom/screens/inner_screen/wishlist.dart';
@@ -65,13 +66,27 @@ class _ProfileScreenState extends State<ProfileScreen>
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppColors.lightScaffoldColor,
+                Colors.white38,
+                AppColors.lightScaffoldColor,
+              ],
+            ),
+          ),
+        ),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
             AssetsManager.shoppingCart,
           ),
         ),
-        title: const AppNameTextWidget(fontSize: 20),
+        title: const AppNameTextWidget(
+          fontSize: 20,
+          text: "Profile Screen",
+        ),
       ),
       body: LoadingManager(
         isLoading: _isLoading,
@@ -92,8 +107,8 @@ class _ProfileScreenState extends State<ProfileScreen>
               userModel == null
                   ? const SizedBox.shrink()
                   : Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
+                      padding:
+                          const EdgeInsets.only(left: 10, top: 20, bottom: 5),
                       child: Row(
                         children: [
                           Container(
@@ -120,7 +135,10 @@ class _ProfileScreenState extends State<ProfileScreen>
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TitlesTextWidget(label: userModel!.userName),
+                              TitlesTextWidget(
+                                label: userModel!.userName,
+                                color: Colors.white,
+                              ),
                               const SizedBox(
                                 height: 6,
                               ),
@@ -130,9 +148,6 @@ class _ProfileScreenState extends State<ProfileScreen>
                         ],
                       ),
                     ),
-              const SizedBox(
-                height: 15,
-              ),
               Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Column(
@@ -146,6 +161,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     ),
                     const TitlesTextWidget(
                       label: "General",
+                      color: Colors.white,
                     ),
                     const SizedBox(
                       height: 10,
@@ -194,6 +210,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     const SizedBox(height: 6),
                     const TitlesTextWidget(
                       label: "Settings",
+                      color: Colors.white,
                     ),
                     const SizedBox(height: 10),
                     SwitchListTile(
@@ -201,9 +218,14 @@ class _ProfileScreenState extends State<ProfileScreen>
                         AssetsManager.theme,
                         height: 34,
                       ),
-                      title: Text(themeProvider.getIsDarkTheme
-                          ? "Dark Mode"
-                          : "Light Mode"),
+                      title: Text(
+                        themeProvider.getIsDarkTheme
+                            ? "Dark Mode"
+                            : "Light Mode",
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                       value: themeProvider.getIsDarkTheme,
                       onChanged: (value) {
                         themeProvider.setDarkTheme(themeValue: value);

@@ -67,6 +67,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                           flex: 5,
                           child: TitlesTextWidget(
                             label: getCurrProduct.productTitle,
+                            color: Colors.white,
                             fontSize: 18,
                             maxLines: 2,
                           ),
@@ -93,13 +94,13 @@ class _ProductWidgetState extends State<ProductWidget> {
                           child: SubtitleTextWidget(
                             label: "${getCurrProduct.productPrice}\$",
                             fontWeight: FontWeight.w600,
-                            color: Colors.blue,
+                            color: Colors.white,
                           ),
                         ),
                         Flexible(
                           child: Material(
                             borderRadius: BorderRadius.circular(12.0),
-                            color: Colors.lightBlue,
+                            color: Theme.of(context).scaffoldBackgroundColor,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(12.0),
                               onTap: () async {

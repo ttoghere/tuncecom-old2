@@ -112,6 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const AppNameTextWidget(
                     fontSize: 30,
+                    text: "Login",
                   ),
                   const SizedBox(
                     height: 16,

@@ -177,6 +177,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   const AppNameTextWidget(
                     fontSize: 30,
+                    text: "Register",
                   ),
                   const SizedBox(
                     height: 30,

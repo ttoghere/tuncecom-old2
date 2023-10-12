@@ -10,7 +10,7 @@ class AppColors {
   static Color grey1 = const Color(0xFF707070);
   static Color grey2 = const Color(0xFF797979);
   static Color white = const Color(0xFFFFFFFF);
-  static const Color lightScaffoldColor = Colors.white;
+  static const Color lightScaffoldColor = Color.fromARGB(255, 188, 68, 68);
   static const Color lightPrimary = Color(0xFF181059);
   static const Color lightCardColor = Color.fromARGB(106, 250, 250, 250);
   static const Color darkScaffoldColor = Color.fromARGB(255, 9, 3, 27);

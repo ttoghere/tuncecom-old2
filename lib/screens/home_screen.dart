@@ -1,7 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tuncecom/consts/app_colors.dart';
 import 'package:tuncecom/consts/app_constants.dart';
+import 'package:tuncecom/providers/theme_provider.dart';
 import 'package:tuncecom/screens/diy/diy_screen.dart';
 import 'package:tuncecom/widgets/products/ctg_rounded_widget.dart';
 import 'package:tuncecom/widgets/products/latest_arrival.dart';
@@ -17,13 +19,25 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final productsProvider = Provider.of<ProductsProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return WillPopScope(
       onWillPop: () async {
         return false;
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.ac_unit),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.lightScaffoldColor,
+                  Colors.white38,
+                  AppColors.lightScaffoldColor,
+                ],
+              ),
+            ),
+          ),
+          leading: const Icon(Icons.ac_unit),
           actions: [
             IconButton(
               onPressed: () {
@@ -32,7 +46,10 @@ class HomeScreen extends StatelessWidget {
               icon: const Icon(Icons.ac_unit),
             ),
           ],
-          title: const AppNameTextWidget(fontSize: 20),
+          title: const AppNameTextWidget(
+            fontSize: 20,
+            text: "Home Screen",
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -69,7 +86,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Visibility(
                   visible: productsProvider.getProducts.isNotEmpty,
-                  child: const TitlesTextWidget(label: "Latest arrival"),
+                  child: const TitlesTextWidget(
+                    label: "Latest arrival",
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(
                   height: 15.0,
@@ -90,7 +110,10 @@ class HomeScreen extends StatelessWidget {
                         }),
                   ),
                 ),
-                const TitlesTextWidget(label: "Categories"),
+                const TitlesTextWidget(
+                  label: "Categories",
+                  color: Colors.white,
+                ),
                 const SizedBox(
                   height: 15.0,
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tuncecom/consts/app_colors.dart';
 import 'package:tuncecom/models/product_model.dart';
 import 'package:tuncecom/providers/products_provider.dart';
 import '../widgets/products/product_widget.dart';
@@ -45,7 +46,20 @@ class _SearchScreenState extends State<SearchScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: TitlesTextWidget(label: passedCategory ?? "Search products"),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.lightScaffoldColor,
+                  Colors.white38,
+                  AppColors.lightScaffoldColor,
+                ],
+              ),
+            ),
+          ),
+          title: TitlesTextWidget(
+            label: passedCategory ?? "Search products",
+          ),
         ),
         body: productList.isEmpty
             ? const Center(child: TitlesTextWidget(label: "No product found"))
@@ -76,7 +90,11 @@ class _SearchScreenState extends State<SearchScreen> {
                           controller: searchTextController,
                           decoration: InputDecoration(
                             hintText: "Search",
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                            ),
                             prefixIcon: const Icon(Icons.search),
+                            border: OutlineInputBorder(),
                             suffixIcon: GestureDetector(
                               onTap: () {
                                 // setState(() {

@@ -50,6 +50,7 @@ class CartWidget extends StatelessWidget {
                                 width: size.width * 0.6,
                                 child: TitlesTextWidget(
                                   label: getCurrProduct.productTitle,
+                                  color: Colors.white,
                                   maxLines: 2,
                                 ),
                               ),
@@ -83,7 +84,7 @@ class CartWidget extends StatelessWidget {
                             children: [
                               SubtitleTextWidget(
                                 label: "${getCurrProduct.productPrice}\$",
-                                color: Colors.blue,
+                                color: Colors.white,
                               ),
                               const Spacer(),
                               OutlinedButton.icon(
@@ -105,8 +106,16 @@ class CartWidget extends StatelessWidget {
                                     },
                                   );
                                 },
-                                icon: const Icon(IconlyLight.arrowDown2),
-                                label: Text("Qty: ${cartModel.quantity}"),
+                                icon: const Icon(
+                                  IconlyLight.arrowDown2,
+                                  color: Colors.white,
+                                ),
+                                label: Text(
+                                  "Qty: ${cartModel.quantity}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
                                 style: OutlinedButton.styleFrom(
                                   side: const BorderSide(width: 1),
                                   shape: RoundedRectangleBorder(

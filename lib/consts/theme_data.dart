@@ -61,7 +61,7 @@ class Styles {
             getMediumStyle(color: AppColors.primary, fontSize: FontSize.s14),
         titleMedium:
             getMediumStyle(color: AppColors.lightGrey, fontSize: FontSize.s14),
-        bodySmall: getRegularStyle(color: AppColors.grey1),
+        bodySmall: getRegularStyle(color: AppColors.darkPrimary),
         bodyLarge: getRegularStyle(color: AppColors.grey),
       ),
       inputDecorationTheme: InputDecorationTheme(

@@ -46,6 +46,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         centerTitle: true,
         title: const AppNameTextWidget(
           fontSize: 22,
+          text: "Forgot Pass",
         ),
       ),
       body: GestureDetector(

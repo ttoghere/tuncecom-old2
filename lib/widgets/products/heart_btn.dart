@@ -82,7 +82,7 @@ class _HeartButtonWidgetState extends State<HeartButtonWidget> {
                   productId: widget.productId,
                 )
                     ? Colors.red
-                    : Colors.grey,
+                    : Colors.white,
               ),
       ),
     );

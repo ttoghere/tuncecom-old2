@@ -90,28 +90,52 @@ class _RootScreenState extends State<RootScreen> {
         },
         destinations: [
           const NavigationDestination(
-            selectedIcon: Icon(IconlyBold.home),
-            icon: Icon(IconlyLight.home),
+            selectedIcon: Icon(
+              IconlyBold.home,
+              color: Colors.white,
+            ),
+            icon: Icon(
+              IconlyLight.home,
+              color: Colors.white,
+            ),
             label: "Home",
           ),
           const NavigationDestination(
-            selectedIcon: Icon(IconlyBold.search),
-            icon: Icon(IconlyLight.search),
+            selectedIcon: Icon(
+              IconlyBold.search,
+              color: Colors.white,
+            ),
+            icon: Icon(
+              IconlyLight.search,
+              color: Colors.white,
+            ),
             label: "Search",
           ),
           NavigationDestination(
-            selectedIcon: const Icon(IconlyBold.bag2),
+            selectedIcon: const Icon(
+              IconlyBold.bag2,
+              color: Colors.white,
+            ),
             icon: Badge(
-              backgroundColor: Colors.blue,
+              backgroundColor: Colors.red[900],
               textColor: Colors.white,
               label: Text(cartProvider.getCartitems.length.toString()),
-              child: const Icon(IconlyLight.bag2),
+              child: const Icon(
+                IconlyLight.bag2,
+                color: Colors.white,
+              ),
             ),
             label: "Cart",
           ),
           const NavigationDestination(
-            selectedIcon: Icon(IconlyBold.profile),
-            icon: Icon(IconlyLight.profile),
+            selectedIcon: Icon(
+              IconlyBold.profile,
+              color: Colors.white,
+            ),
+            icon: Icon(
+              IconlyLight.profile,
+              color: Colors.white,
+            ),
             label: "Profile",
           ),
         ],

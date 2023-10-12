@@ -44,7 +44,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           ),
         ),
         // automaticallyImplyLeading: false,
-        title: const AppNameTextWidget(fontSize: 20),
+        title: const AppNameTextWidget(
+          fontSize: 20,
+          text: "Product Details",
+        ),
       ),
       body: getCurrProduct == null
           ? const SizedBox.shrink()

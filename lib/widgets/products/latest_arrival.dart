@@ -58,6 +58,7 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                       productsModel.productTitle,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.white),
                     ),
                     const SizedBox(
                       height: 5,
@@ -105,7 +106,7 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                       child: SubtitleTextWidget(
                         label: "${productsModel.productPrice}\$",
                         fontWeight: FontWeight.w600,
-                        color: Colors.blue,
+                        color: Colors.white,
                       ),
                     ),
                   ],
